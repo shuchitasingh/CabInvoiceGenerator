@@ -27,5 +27,14 @@ public class CabInvoiceGenerator {
         return new InvoiceSummary(fare, rides.length);
     }
 
+    public void addRidesForPerticularUser(String userId, Ride[] rides) {
+        ridesHistory.addRidesForUserID(userId, rides);
+
+    }
+
+    public InvoiceSummary getInvoiceSummary(String userId) {
+        Ride[] rideData = ridesHistory.getRidesHistory(userId);
+        return calculateInvoiceSummary(rideData);
+    }
 
 }
