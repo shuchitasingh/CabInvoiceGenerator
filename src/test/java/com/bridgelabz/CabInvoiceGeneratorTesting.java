@@ -21,6 +21,23 @@ public class CabInvoiceGeneratorTesting {
         System.out.println(fare);
         Assertions.assertEquals(70, fare, 0.0);
     }
+    @Test
+    public void givenSmalldistanceAndTime_shouldReturn_MinimumFare() {
+        double distance = 0.2;
+        int time = 2;
+        double fare = invoice.calculateNormalFare(distance, time);
+        System.out.println(fare);
+        Assertions.assertEquals(5, fare, 0.0);
+    }
+
+    @Test
+    public void given_multipleRide_shouldreturn_totalfare() {
+        Ride[] rides = {new Ride(2.0, 5, "NORMAL"),
+                new Ride(4.0, 5, "NORMAL"),
+                new Ride(7.0, 3, "NORMAL")};
+        double fare = invoice.calculateFare(rides);
+        Assertions.assertEquals(143.0, fare);
+    }
 
 
 }
