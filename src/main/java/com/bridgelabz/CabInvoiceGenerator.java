@@ -22,6 +22,10 @@ public class CabInvoiceGenerator {
         return totalFare;
     }
 
+    public InvoiceSummary calculateInvoiceSummary(Ride[] rides) {
+        double fare = calculateFare(rides);
+        return new InvoiceSummary(fare, rides.length);
+    }
 
 
 }

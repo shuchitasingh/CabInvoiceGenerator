@@ -38,6 +38,17 @@ public class CabInvoiceGeneratorTesting {
         double fare = invoice.calculateFare(rides);
         Assertions.assertEquals(143.0, fare);
     }
-
+    @Test
+    public void given_multipleRide_shouldreturn_InvoiceSummary() {
+        Ride[] rides = {new Ride(2.0, 5, "NORMAL"),
+                new Ride(4.0, 5, "NORMAL"),
+                new Ride(7.0, 3, "NORMAL")};
+        InvoiceSummary expectedSummary = new InvoiceSummary(143.0, 3);
+        System.out.println("Total no of rides=" + expectedSummary.getRides());
+        System.out.println("Avarage=" + expectedSummary.getAverageFare());
+        InvoiceSummary summary = invoice.calculateInvoiceSummary(rides);
+        System.out.println("Invoice summary=" + summary.getAverageFare());
+        Assertions.assertEquals(expectedSummary.getAverageFare(), summary.getAverageFare());
+    }
 
 }
