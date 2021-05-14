@@ -36,5 +36,6 @@ public class CabInvoiceGenerator {
         Ride[] rideData = ridesHistory.getRidesHistory(userId);
         return calculateInvoiceSummary(rideData);
     }
-
 }
+
+
